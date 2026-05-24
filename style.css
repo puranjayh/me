@@ -63,34 +63,7 @@ body {
   height: 100vh;
   overflow: hidden;
 }
-.code-body {
-  max-width: 1100px;
-}
-/* ─── GLOBAL HOVER GLOW ───────────────────────── */
-.interactive {
-  position: relative;
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    border-color 0.18s ease;
-}
 
-.interactive:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 0 0 1px rgba(34,211,238,0.25),
-    0 0 18px rgba(34,211,238,0.12);
-
-  border-color: rgba(34,211,238,0.45);
-}
-.editor-wrap {
-  animation: floatUI 5s ease-in-out infinite;
-}
-
-@keyframes floatUI {
-  0%,100% { transform: translateY(0px); }
-  50% { transform: translateY(-2px); }
-}
 /* ─── ACTIVITY BAR ──────────────────────────────────────── */
 .activity-bar {
   width: var(--activity-w);
