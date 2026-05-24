@@ -140,3 +140,65 @@ document.querySelectorAll('.tree-file, a[href^="#"]').forEach(link => {
     }
   });
 });
+/* ─── TAB CLICK NAVIGATION ───────────────────── */
+tabBar.addEventListener('click', (e) => {
+
+  const closeBtn = e.target.closest('.tab-close');
+  const tab = e.target.closest('.tab');
+
+  if (!tab) return;
+
+  const file = tab.dataset.file;
+
+  // close tab
+  if (closeBtn) {
+
+    e.stopPropagation();
+
+    // don't close last tab
+    if (document.querySelectorAll('.tab').length === 1) return;
+
+    tab.remove();
+    openTabs.delete(file);
+
+    // activate first remaining tab
+    const firstTab = document.querySelector('.tab');
+
+    if (firstTab) {
+
+      const activeFile = firstTab.dataset.file;
+
+      const sectionId = Object.keys(fileMap)
+        .find(key => fileMap[key].file === activeFile);
+
+      if (sectionId) {
+
+        document
+          .getElementById(sectionId)
+          ?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+        setActiveFile(sectionId);
+      }
+    }
+
+    return;
+  }
+
+  // activate clicked tab
+  const sectionId = Object.keys(fileMap)
+    .find(key => fileMap[key].file === file);
+
+  if (!sectionId) return;
+
+  document
+    .getElementById(sectionId)
+    ?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+  setActiveFile(sectionId);
+});
