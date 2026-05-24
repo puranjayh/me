@@ -16,7 +16,7 @@
   --line-num:     #6b7280;
   --muted:        #8b949e;
 
-  --font: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+--font: 'SF Mono', 'JetBrains Mono', 'IBM Plex Mono', monospace;
 
   /* ─── SYNTAX COLORS ───────────────────────── */
   --c-comment:    #6b7280;
@@ -62,6 +62,15 @@ body {
   display: flex;
   height: 100vh;
   overflow: hidden;
+}
+
+.editor-wrap {
+  animation: floatUI 5s ease-in-out infinite;
+}
+
+@keyframes floatUI {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-2px); }
 }
 
 /* ─── ACTIVITY BAR ──────────────────────────────────────── */
