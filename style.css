@@ -2,32 +2,40 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* VSCode Dark+ palette */
-  --bg:           #1e1e1e;
-  --sidebar-bg:   #252526;
-  --activity-bg:  #333333;
-  --tab-bg:       #2d2d2d;
-  --tab-active:   #1e1e1e;
-  --tab-border:   #252526;
-  --status-bg:    #007acc;
-  --border:       #3c3c3c;
-  --line-num:     #858585;
-  --text:         #d4d4d4;
-  --muted:        #6a9955;
-  --font:         'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  /* ─── CORE THEME ───────────────────────────── */
+  --bg:           #0d1117;
+  --sidebar-bg:   #111827;
+  --activity-bg:  #0b1220;
+  --tab-bg:       #161b22;
+  --tab-active:   #0d1117;
+  --tab-border:   #1f2937;
+  --status-bg:    #38bdf8;
+  --border:       #263042;
 
-  /* Syntax colours */
-  --c-comment:    #6a9955;
-  --c-keyword:    #3ea2f4;
-  --c-string:     #ff723a;
-  --c-number:     #b5cea8;
-  --c-key:        #9cdcfe;
-  --c-var:        #4fc1ff;
-  --c-punct:      #d4d4d4;
-  --c-h1:         #4ec9b0;
-  --c-h2:         #569cd6;
-  --c-link:       #ff723a;
-  --c-bullet:     #569cd6;
+  --text:         #e6edf3;
+  --line-num:     #6b7280;
+  --muted:        #8b949e;
+
+  --font: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* ─── SYNTAX COLORS ───────────────────────── */
+  --c-comment:    #6b7280;
+  --c-keyword:    #7dd3fc;
+  --c-string:     #fca5a5;
+  --c-number:     #86efac;
+  --c-key:        #c084fc;
+  --c-var:        #38bdf8;
+  --c-punct:      #d1d5db;
+
+  --c-h1:         #22d3ee;
+  --c-h2:         #60a5fa;
+  --c-link:       #fb7185;
+  --c-bullet:     #38bdf8;
+
+  /* ─── UI ACCENTS ──────────────────────────── */
+  --glow-blue:    #38bdf8;
+  --glow-cyan:    #22d3ee;
+  --glow-pink:    #fb7185;
 
   --sidebar-w:    220px;
   --activity-w:   48px;
@@ -212,7 +220,8 @@ body {
 .tab.active {
   background: var(--tab-active);
   color: var(--text);
-  border-top: 1px solid var(--status-bg);
+  border-top: 1px solid var(--glow-blue);
+  box-shadow: inset 0 1px 0 var(--glow-blue);
 }
 .tab-close {
   font-size: 0.6rem;
@@ -315,7 +324,10 @@ body {
   padding-left: 4px;
   transition: border-color 0.2s;
 }
-.work-entry:hover { border-color: var(--status-bg); }
+.work-entry:hover,
+.proj-block:hover {
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.18);
+}
 
 /* ─── PROJECT BLOCKS ────────────────────────────────────── */
 .proj-block {
