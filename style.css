@@ -83,31 +83,8 @@ body {
 
   border-color: rgba(34,211,238,0.45);
 }
-
 .editor-wrap {
   animation: floatUI 5s ease-in-out infinite;
-}
-/* ─── CURSOR GLOW ─────────────────────────────── */
-.cursor-glow {
-  position: fixed;
-  width: 280px;
-  height: 280px;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(34,211,238,0.12) 0%,
-      rgba(34,211,238,0.05) 30%,
-      transparent 70%
-    );
-
-  pointer-events: none;
-  z-index: 9999;
-
-  transform: translate(-50%, -50%);
-  transition: opacity 0.2s ease;
-
-  mix-blend-mode: screen;
 }
 
 @keyframes floatUI {

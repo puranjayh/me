@@ -88,27 +88,6 @@ function setActiveFile(id) {
   currentFile = file;
 }
 
-document.querySelectorAll(`
-  .tab,
-  .tree-file,
-  .work-entry,
-  .proj-block,
-  .hobby-item,
-  .open-editor,
-  .activity-icon
-`).forEach(el => {
-  el.classList.add('interactive');
-});
-/* ─── CURSOR GLOW FOLLOW ─────────────────────── */
-const glow = document.createElement('div');
-glow.className = 'cursor-glow';
-document.body.appendChild(glow);
-
-document.addEventListener('mousemove', (e) => {
-  glow.style.left = `${e.clientX}px`;
-  glow.style.top = `${e.clientY}px`;
-});
-
 const sectionObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) setActiveFile(entry.target.id);
