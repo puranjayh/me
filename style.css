@@ -43,7 +43,13 @@
   --breadcrumb-h: 22px;
   --status-h:     22px;
 }
-
+* {
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
 html { font-size: 14px; }
 
 body {
@@ -61,7 +67,9 @@ body {
 /* ─── ACTIVITY BAR ──────────────────────────────────────── */
 .activity-bar {
   width: var(--activity-w);
-  background: var(--activity-bg);
+  .activity-bar {
+  background: rgba(11, 18, 32, 0.85);
+  backdrop-filter: blur(14px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,7 +102,9 @@ body {
 /* ─── SIDEBAR ───────────────────────────────────────────── */
 .sidebar {
   width: var(--sidebar-w);
-  background: var(--sidebar-bg);
+  background: rgba(17, 24, 39, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -133,6 +143,13 @@ body {
   color: #cccccc;
   font-size: 0.78rem;
   font-weight: 500;
+}
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
 .tree-arrow { font-size: 0.6rem; color: #888; }
@@ -223,10 +240,19 @@ body {
 }
 .tab:hover { background: #2a2a2a; color: var(--text); }
 .tab.active {
-  background: var(--tab-active);
-  color: var(--text);
+  background: linear-gradient(
+    to bottom,
+    rgba(56,189,248,0.12),
+    rgba(13,17,23,1)
+  );
+
+  color: white;
+
   border-top: 1px solid var(--glow-blue);
-  box-shadow: inset 0 1px 0 var(--glow-blue);
+
+  box-shadow:
+    inset 0 1px 0 var(--glow-blue),
+    0 0 12px rgba(56,189,248,0.15);
 }
 .tab-close {
   font-size: 0.6rem;
@@ -255,7 +281,13 @@ body {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top right, rgba(56,189,248,0.06), transparent 25%),
+    radial-gradient(circle at bottom left, rgba(168,85,247,0.05), transparent 25%),
+    var(--bg);
+
+  box-shadow:
+    inset 0 0 120px rgba(0,0,0,0.35);
 }
 
 .editor-content::-webkit-scrollbar { width: 8px; }
@@ -310,7 +342,11 @@ body {
 .ln-key      { color: var(--c-key); }
 .ln-var      { color: var(--c-var); }
 .ln-punct    { color: var(--c-punct); }
-.ln-h1       { color: var(--c-h1); font-weight: 500; font-size: 1.05rem; }
+.ln-h1 {
+  color: var(--c-h1);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-shadow: 0 0 12px rgba(34,211,238,0.35); }
 .ln-h2       { color: var(--c-h2); font-weight: 500; }
 .ln-text     { color: var(--text); }
 .ln-bullet   { color: var(--c-bullet); }
@@ -426,4 +462,5 @@ body {
   .sidebar { display: none; }
   .activity-bar { display: none; }
   .hobbies-grid { grid-template-columns: 1fr; }
+}
 }
