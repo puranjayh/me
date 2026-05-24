@@ -67,7 +67,6 @@ body {
 /* ─── ACTIVITY BAR ──────────────────────────────────────── */
 .activity-bar {
   width: var(--activity-w);
-  .activity-bar {
   background: rgba(11, 18, 32, 0.85);
   backdrop-filter: blur(14px);
   display: flex;
@@ -462,5 +461,4 @@ body {
   .sidebar { display: none; }
   .activity-bar { display: none; }
   .hobbies-grid { grid-template-columns: 1fr; }
-}
 }
