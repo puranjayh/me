@@ -224,17 +224,27 @@ body {
 .tab-bar::-webkit-scrollbar { display: none; }
 
 .tab {
-  display: flex;
+  display: inline-flex;
+
   align-items: center;
   gap: 6px;
+
   padding: 0 14px;
+
   height: 100%;
+
   font-size: 0.75rem;
+
   color: #969696;
+
   cursor: pointer;
+
   border-right: 1px solid var(--border);
+
   white-space: nowrap;
-  transition: background 0.1s, color 0.1s;
+
+  flex-shrink: 0;
+
   background: var(--tab-bg);
 }
 .tab:hover { background: #2a2a2a; color: var(--text); }
