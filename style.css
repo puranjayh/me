@@ -18,15 +18,15 @@
 
   /* Syntax colours */
   --c-comment:    #6a9955;
-  --c-keyword:    #569cd6;
-  --c-string:     #ce9178;
+  --c-keyword:    #3ea2f4;
+  --c-string:     #ff723a;
   --c-number:     #b5cea8;
   --c-key:        #9cdcfe;
   --c-var:        #4fc1ff;
   --c-punct:      #d4d4d4;
   --c-h1:         #4ec9b0;
   --c-h2:         #569cd6;
-  --c-link:       #ce9178;
+  --c-link:       #ff723a;
   --c-bullet:     #569cd6;
 
   --sidebar-w:    220px;
