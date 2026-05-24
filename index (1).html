@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ACTIVITY BAR (left icon rail) -->
+  <div class="activity-bar">
+    <div class="activity-icon active" title="Explorer" data-section="explorer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </div>
+    <div class="activity-icon" title="Search" data-section="search">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+    </div>
+    <div class="activity-icon" title="Source Control" data-section="git">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M6 8v8M8 6h6a4 4 0 0 1 4 4v2"/></svg>
+    </div>
+    <div class="activity-icon" title="Extensions" data-section="ext">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5l6.74-6.76z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+    </div>
+    <div class="activity-spacer"></div>
+    <div class="activity-icon" title="Settings">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </div>
+  </div>
+
+  <!-- SIDEBAR (file explorer) -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">EXPLORER</div>
+    <div class="sidebar-section">
+      <div class="tree-root open" id="treeRoot">
+        <span class="tree-arrow">▾</span>
+        <span class="tree-folder-icon">📁</span>
+        <span>PORTFOLIO</span>
+      </div>
+      <div class="tree-children" id="treeChildren">
+        <a href="#about" class="tree-file active" data-file="about.md">
+          <span class="file-icon md"></span>about.md
+        </a>
+        <a href="#work" class="tree-file" data-file="work.json">
+          <span class="file-icon json"></span>work.json
+        </a>
+        <a href="#projects" class="tree-file" data-file="projects.ts">
+          <span class="file-icon ts"></span>projects.ts
+        </a>
+        <a href="#life" class="tree-file" data-file="hobbies.jsx">
+          <span class="file-icon jsx"></span>hobbies.jsx
+        </a>
+        <a href="#contact" class="tree-file" data-file="contact.sh">
+          <span class="file-icon sh"></span>contact.sh
+        </a>
+      </div>
+    </div>
+    <div class="sidebar-section" style="margin-top:1.5rem">
+      <div class="sidebar-group-label">OPEN EDITORS</div>
+      <div class="open-editors">
+        <div class="open-editor active">
+          <span class="file-icon md"></span>about.md
+          <span class="editor-close">✕</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN EDITOR AREA -->
+  <div class="editor-wrap">
+
+    <!-- TAB BAR -->
+    <div class="tab-bar" id="tabBar">
+      <div class="tab active" data-file="about.md">
+        <span class="file-icon md"></span>about.md
+        <span class="tab-close">✕</span>
+      </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <span>PORTFOLIO</span>
+      <span class="bc-sep">›</span>
+      <span class="bc-active" id="breadcrumbFile">about.md</span>
+    </div>
+
+    <!-- EDITOR CONTENT (scrollable) -->
+    <main class="editor-content">
+
+      <!-- LINE NUMBERS + CODE AREA wrapper -->
+      <div class="code-view">
+        <div class="line-nums" id="lineNums"></div>
+        <div class="code-body">
+
+          <!-- ── ABOUT ──────────────────────────────────────── -->
+          <section id="about" class="code-section">
+            <div class="code-line"><span class="ln-comment"># about.md</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-h1"># Your Name</span></div>  <!-- CHANGE -->
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-text">Designer & developer based in </span><span class="ln-string">Mumbai</span><span class="ln-text">.</span></div>  <!-- CHANGE -->
+            <div class="code-line">
+              <span class="ln-text">Currently building </span>
+              <a href="#" class="ln-link">your-project.io</a>
+              <span class="ln-text"> — a one-line description.</span>
+            </div>  <!-- CHANGE -->
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-h2">## Quick facts</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">University:</span> <span class="ln-string">"Your University, CS '26"</span></div>  <!-- CHANGE -->
+            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">GPA:</span> <span class="ln-number">9.2</span></div>
+            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">Location:</span> <span class="ln-string">"Mumbai, India"</span></div>
+            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">Status:</span> <span class="ln-string">"Open to work"</span></div>
+            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">Stack:</span> <span class="ln-string">"React · TypeScript · Python · Figma"</span></div>  <!-- CHANGE -->
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line">
+              <a href="mailto:you@example.com" class="ln-link">you@example.com</a>
+              <span class="ln-text">  ·  </span>
+              <a href="https://github.com" class="ln-link" target="_blank">github</a>
+              <span class="ln-text">  ·  </span>
+              <a href="https://linkedin.com" class="ln-link" target="_blank">linkedin</a>
+            </div>  <!-- CHANGE -->
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line">&nbsp;</div>
+          </section>
+
+          <!-- ── WORK ───────────────────────────────────────── -->
+          <section id="work" class="code-section">
+            <div class="code-line"><span class="ln-comment">// work.json</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-punct">{</span></div>
+            <div class="code-line">&nbsp;&nbsp;<span class="ln-key">"experience"</span><span class="ln-punct">:</span> <span class="ln-punct">[</span></div>
+            <div class="code-line">&nbsp;</div>
+
+            <!-- CHANGE: each work-entry block is one job -->
+            <div class="work-entry reveal">
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">{</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Founder"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"Your Startup"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"2025 — now"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"tags"</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"AI"</span><span class="ln-punct">, </span><span class="ln-string">"Startup"</span><span class="ln-punct">]</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">},</span></div>
+            </div>
+
+            <div class="work-entry reveal">
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">{</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Freelance Designer"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"Various clients"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"2023 — now"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"tags"</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"Figma"</span><span class="ln-punct">, </span><span class="ln-string">"React"</span><span class="ln-punct">]</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">},</span></div>
+            </div>
+
+            <div class="work-entry reveal">
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">{</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"B.Tech Computer Science"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"Your University"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"2022 — '26"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"tags"</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"CS"</span><span class="ln-punct">, </span><span class="ln-string">"9.2 GPA"</span><span class="ln-punct">]</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">}</span></div>
+            </div>
+
+            <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">]</span></div>
+            <div class="code-line"><span class="ln-punct">}</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line">&nbsp;</div>
+          </section>
+
+          <!-- ── PROJECTS ────────────────────────────────────── -->
+          <section id="projects" class="code-section">
+            <div class="code-line"><span class="ln-comment">// projects.ts</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-keyword">const</span> <span class="ln-var">projects</span> <span class="ln-punct">=</span> <span class="ln-punct">[</span></div>
+            <div class="code-line">&nbsp;</div>
+
+            <!-- CHANGE: each project block -->
+            <div class="proj-block reveal">
+              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">{</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"Your Main Project"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string building">"building"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"One punchy sentence. What it does and why it matters."</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"React"</span><span class="ln-punct">, </span><span class="ln-string">"Python"</span><span class="ln-punct">, </span><span class="ln-string">"Postgres"</span><span class="ln-punct">],</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">url</span><span class="ln-punct">:</span> <a href="#" class="ln-link">"yourproject.io"</a></div>
+              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">},</span></div>
+            </div>
+
+            <div class="proj-block reveal">
+              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">{</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"AI Side Project"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string inprogress">"in-progress"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"An agent, tool, or weird experiment you wanted to try."</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"Python"</span><span class="ln-punct">, </span><span class="ln-string">"GPT-4o"</span><span class="ln-punct">, </span><span class="ln-string">"FastAPI"</span><span class="ln-punct">],</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">url</span><span class="ln-punct">:</span> <a href="#" class="ln-link">"github.com/you/project"</a></div>
+              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">},</span></div>
+            </div>
+
+            <div class="proj-block reveal">
+              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">{</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"Hackathon Win"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string award">"🏆 1st place"</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"What you built in 24 hrs. Keep it simple — problem and solution."</span><span class="ln-punct">,</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"Next.js"</span><span class="ln-punct">, </span><span class="ln-string">"OpenAI"</span><span class="ln-punct">],</span></div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">url</span><span class="ln-punct">:</span> <a href="#" class="ln-link">"devpost.com/your-project"</a></div>
+              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">}</span></div>
+            </div>
+
+            <div class="code-line"><span class="ln-punct">]</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-keyword">export default</span> <span class="ln-var">projects</span><span class="ln-punct">;</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line">&nbsp;</div>
+          </section>
+
+          <!-- ── HOBBIES ─────────────────────────────────────── -->
+          <section id="life" class="code-section">
+            <div class="code-line"><span class="ln-comment">// hobbies.jsx — life outside the editor</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-keyword">export function</span> <span class="ln-var">Life</span><span class="ln-punct">() {</span></div>
+            <div class="code-line">&nbsp;&nbsp;<span class="ln-keyword">return</span> <span class="ln-punct">(</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="hobbies-grid">
+              <!-- CHANGE: your hobbies -->
+              <div class="hobby-item reveal">
+                <div class="hobby-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=80" alt="Photography" />
+                </div>
+                <div class="hobby-meta">
+                  <span class="hobby-prop"><span class="ln-key">activity</span><span class="ln-punct">:</span> <span class="ln-string">"Photography"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">gear</span><span class="ln-punct">:</span> <span class="ln-string">"Fuji X100V"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">location</span><span class="ln-punct">:</span> <span class="ln-string">"Mumbai streets"</span></span>
+                </div>
+              </div>
+              <div class="hobby-item reveal">
+                <div class="hobby-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80" alt="Running" />
+                </div>
+                <div class="hobby-meta">
+                  <span class="hobby-prop"><span class="ln-key">activity</span><span class="ln-punct">:</span> <span class="ln-string">"Running"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">goal</span><span class="ln-punct">:</span> <span class="ln-string">"Half marathon"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">route</span><span class="ln-punct">:</span> <span class="ln-string">"Marine Drive 6am"</span></span>
+                </div>
+              </div>
+              <div class="hobby-item reveal">
+                <div class="hobby-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&q=80" alt="Reading" />
+                </div>
+                <div class="hobby-meta">
+                  <span class="hobby-prop"><span class="ln-key">activity</span><span class="ln-punct">:</span> <span class="ln-string">"Reading"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">genre</span><span class="ln-punct">:</span> <span class="ln-string">"Non-fiction, Sci-fi"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">currentBook</span><span class="ln-punct">:</span> <span class="ln-string">"Something Good"</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">)</span></div>
+            <div class="code-line"><span class="ln-punct">}</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line">&nbsp;</div>
+          </section>
+
+          <!-- ── CONTACT ─────────────────────────────────────── -->
+          <section id="contact" class="code-section">
+            <div class="code-line"><span class="ln-comment">#!/bin/bash</span></div>
+            <div class="code-line"><span class="ln-comment"># contact.sh</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-keyword">echo</span> <span class="ln-string">"Build something together."</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-var">EMAIL</span><span class="ln-punct">=</span><span class="ln-string">"<a href="mailto:you@example.com" class="ln-link">you@example.com</a>"</span></div>  <!-- CHANGE -->
+            <div class="code-line"><span class="ln-var">GITHUB</span><span class="ln-punct">=</span><span class="ln-string">"<a href="https://github.com" class="ln-link" target="_blank">github.com/yourhandle</a>"</span></div>  <!-- CHANGE -->
+            <div class="code-line"><span class="ln-var">LINKEDIN</span><span class="ln-punct">=</span><span class="ln-string">"<a href="https://linkedin.com" class="ln-link" target="_blank">linkedin.com/in/yourprofile</a>"</span></div>  <!-- CHANGE -->
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-keyword">open</span> <span class="ln-string">"mailto:$EMAIL"</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line">&nbsp;</div>
+          </section>
+
+        </div><!-- /code-body -->
+      </div><!-- /code-view -->
+    </main><!-- /editor-content -->
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <div class="status-left">
+        <span class="status-item git">⎇ main</span>
+        <span class="status-item">✓ 0 errors</span>
+      </div>
+      <div class="status-right">
+        <span class="status-item" id="statusFile">Markdown</span>
+        <span class="status-item">UTF-8</span>
+        <span class="status-item" id="statusLn">Ln 1, Col 1</span>
+      </div>
+    </div>
+
+  </div><!-- /editor-wrap -->
+
+  <script src="script.js"></script>
+</body>
+</html>
