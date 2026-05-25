@@ -7,11 +7,29 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- ACTIVITY BAR (left icon rail) -->
+  <!-- COMMAND PALETTE -->
+  <div class="cmd-overlay" id="cmdOverlay">
+    <div class="cmd-box">
+      <div class="cmd-input-wrap">
+        <span class="cmd-arrow">›</span>
+        <input class="cmd-input" id="cmdInput" placeholder="Go to file..." autofocus />
+      </div>
+      <div class="cmd-results">
+        <div class="cmd-result active" data-href="#about">about.md <span class="cmd-hint">About</span></div>
+        <div class="cmd-result" data-href="#work">work.json <span class="cmd-hint">Experience</span></div>
+        <div class="cmd-result" data-href="#projects">projects.ts <span class="cmd-hint">Projects</span></div>
+        <div class="cmd-result" data-href="#awards">awards.yml <span class="cmd-hint">Awards</span></div>
+        <div class="cmd-result" data-href="#life">hobbies.jsx <span class="cmd-hint">Life</span></div>
+        <div class="cmd-result" data-href="#contact">contact.sh <span class="cmd-hint">Contact</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY BAR -->
   <div class="activity-bar">
     <div class="activity-icon active" title="Explorer" data-section="explorer">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -31,7 +49,7 @@
     </div>
   </div>
 
-  <!-- SIDEBAR (file explorer) -->
+  <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">BUILDER</div>
     <div class="sidebar-section">
@@ -50,6 +68,9 @@
         <a href="#projects" class="tree-file" data-file="projects.ts">
           <span class="file-icon ts"></span>projects.ts
         </a>
+        <a href="#awards" class="tree-file" data-file="awards.yml">
+          <span class="file-icon yml"></span>awards.yml
+        </a>
         <a href="#life" class="tree-file" data-file="hobbies.jsx">
           <span class="file-icon jsx"></span>hobbies.jsx
         </a>
@@ -67,6 +88,16 @@
         </div>
       </div>
     </div>
+    <!-- LIVE METRICS PANEL -->
+    <div class="metrics-panel">
+      <div class="metrics-label">// live_stats.sh</div>
+      <div class="metric-line"><span class="m-key">USERS</span><span class="m-val counter" data-target="10000">0</span></div>
+      <div class="metric-line"><span class="m-key">COUNTRIES</span><span class="m-val">108</span></div>
+      <div class="metric-line"><span class="m-key">IB_SCORE</span><span class="m-val">41/42</span></div>
+      <div class="metric-line"><span class="m-key">ML_ACC</span><span class="m-val">83.3%</span></div>
+      <div class="metric-line"><span class="m-key">PAPERS</span><span class="m-val">2</span></div>
+      <div class="metric-line"><span class="m-key">STATUS</span><span class="m-val blink-val">● BUILDING</span></div>
+    </div>
   </aside>
 
   <!-- MAIN EDITOR AREA -->
@@ -78,6 +109,11 @@
         <span class="file-icon md"></span>about.md
         <span class="tab-close">✕</span>
       </div>
+      <!-- cmd palette hint -->
+      <div class="cmd-hint-tab" id="cmdHint" title="Open Command Palette (Ctrl+P)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        Ctrl+P
+      </div>
     </div>
 
     <!-- BREADCRUMB -->
@@ -87,35 +123,35 @@
       <span class="bc-active" id="breadcrumbFile">about.md</span>
     </div>
 
-    <!-- EDITOR CONTENT (scrollable) -->
+    <!-- EDITOR CONTENT -->
     <main class="editor-content">
-
-      <!-- LINE NUMBERS + CODE AREA wrapper -->
       <div class="code-view">
         <div class="line-nums" id="lineNums"></div>
         <div class="code-body">
 
-          <!-- ── ABOUT ──────────────────────────────────────── -->
+          <!-- ── ABOUT ──────────────────────────── -->
           <section id="about" class="code-section">
             <div class="code-line"><span class="ln-comment"># about.md</span></div>
             <div class="code-line">&nbsp;</div>
-            <div class="code-line"><span class="ln-h1"># Puranjay Haldankar</span></div>  <!-- CHANGE -->
+            <div class="code-line">
+              <span class="ln-h1 typed-text" id="typedName"></span><span class="cursor">█</span>
+            </div>
             <div class="code-line">&nbsp;</div>
-            <div class="code-line"><span class="ln-text"> Developer · </span><span class="ln-string">Atlanta</span><span class="ln-text">.</span></div>  <!-- CHANGE -->
+            <div class="code-line"><span class="ln-text">ML Researcher · Co-Founder · </span><span class="ln-string">Mumbai → Atlanta</span></div>
             <div class="code-line">
               <span class="ln-text">Currently building </span>
-              <a href="#" class="ln-link">The only fitness app you will EVER need.</a>
-              <span class="ln-text">Loading...</span>
-            </div>  <!-- CHANGE -->
+              <a href="#" class="ln-link">the only fitness app you'll ever need</a>
+              <span class="ln-text"> 🚀</span>
+            </div>
             <div class="code-line">&nbsp;</div>
             <div class="code-line"><span class="ln-h2">## Quick facts</span></div>
             <div class="code-line">&nbsp;</div>
-            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">University:</span> <span class="ln-string">"Georgia Tech, CS '30"</span></div>  <!-- CHANGE -->
-            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">GPA:</span> <span class="ln-number">4.0</span></div>
-            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">Location:</span> <span class="ln-string">"Atlanta, Georgia"</span></div>
-            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">Developed:</span> <span class="ln-string">"ibcognito.com"</span></div>
-            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">Research:</span> <span class="ln-string">"SCRNA sq data for CTC Mechanisms under Dr. Sarita Poonia", "Hidden Markov Chains for sports predictions"</span></div>
-            <div class="code-line"><span class="ln-bullet">-</span> <span class="ln-key">Stack:</span> <span class="ln-string">"React · TypeScript · Python · Figma · SQL · Figma"</span></div>  <!-- CHANGE -->
+            <div class="code-line reveal"><span class="ln-bullet">-</span> <span class="ln-key">University:</span> <span class="ln-string">"Georgia Tech, CS '30"</span></div>
+            <div class="code-line reveal"><span class="ln-bullet">-</span> <span class="ln-key">IB_Score:</span> <span class="ln-number">41/42</span> <span class="ln-comment">// top 1% worldwide</span></div>
+            <div class="code-line reveal"><span class="ln-bullet">-</span> <span class="ln-key">ICSE_CS_Rank:</span> <span class="ln-number">1</span> <span class="ln-comment">// All India</span></div>
+            <div class="code-line reveal"><span class="ln-bullet">-</span> <span class="ln-key">Location:</span> <span class="ln-string">"Mumbai, India"</span></div>
+            <div class="code-line reveal"><span class="ln-bullet">-</span> <span class="ln-key">Stack:</span> <span class="ln-string">"Python · React · TypeScript · PyTorch · SQL · Figma"</span></div>
+            <div class="code-line reveal"><span class="ln-bullet">-</span> <span class="ln-key">Research:</span> <span class="ln-string">"GNNs for CTC transcriptomics · HMM sports prediction"</span></div>
             <div class="code-line">&nbsp;</div>
             <div class="code-line">
               <a href="mailto:puranjayhaldankar2009@gmail.com" class="ln-link">puranjayhaldankar2009@gmail.com</a>
@@ -123,52 +159,121 @@
               <a href="https://github.com/puranjayh" class="ln-link" target="_blank">github</a>
               <span class="ln-text">  ·  </span>
               <a href="https://www.linkedin.com/in/puranjay-haldankar-529a07320/" class="ln-link" target="_blank">linkedin</a>
-            </div>  <!-- CHANGE -->
+            </div>
             <div class="code-line">&nbsp;</div>
             <div class="code-line">&nbsp;</div>
           </section>
 
-          <!-- ── WORK ───────────────────────────────────────── -->
+          <!-- ── WORK ──────────────────────────── -->
           <section id="work" class="code-section">
             <div class="code-line"><span class="ln-comment">// work.json</span></div>
             <div class="code-line">&nbsp;</div>
             <div class="code-line"><span class="ln-punct">{</span></div>
-            <div class="code-line">&nbsp;&nbsp;<span class="ln-key">"experience"</span><span class="ln-punct">:</span> <span class="ln-punct">[</span></div>
+            <div class="code-line">&nbsp;&nbsp;<span class="ln-key">"experience"</span><span class="ln-punct">: [</span></div>
             <div class="code-line">&nbsp;</div>
 
-            <!-- CHANGE: each work-entry block is one job -->
             <div class="work-entry reveal">
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">{</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Founder"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"IB Cognito"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"2024 - 2026"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"Description"</span><span class="ln-punct">:</span> <span class="ln-punct"></span><span class="ln-string">"Co-founded and Developed an end-to-end IB notes application which peaked at 10k monthly users from 108 countries."</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">},</span></div>
+              <div class="work-header">
+                <div class="work-dot dot-active"></div>
+                <div>
+                  <div class="code-line"><span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"ML Researcher"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"Independent (Dr. Sarita Poonia)"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"Apr 2026 – Present"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"desc"</span><span class="ln-punct">:</span> <span class="ln-string">"Building multi-stress transcriptomic framework using GNNs to identify pan-stress survival hub genes in CTCs and predict immune evasion from gene expression data."</span></div>
+                  <div class="work-tags"><span class="tag">GNN</span><span class="tag">RNA-seq</span><span class="tag">PyTorch</span><span class="tag">Bioinformatics</span></div>
+                </div>
+              </div>
             </div>
 
             <div class="work-entry reveal">
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">{</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Researcher"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"under"</span><span class="ln-punct">:</span> <span class="ln-string">"Dr. Sarita Poonia"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"2026 - now"</span><span class="ln-punct">,</span></div>
-               <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"description"</span><span class="ln-punct">:</span> <span class="ln-punct"></span><span class="ln-string">"Researching transciptomic data under stress-conditions in Circulating Tumor Cells."</span></div>              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">}</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">},</span></div>
+              <div class="work-header">
+                <div class="work-dot dot-active"></div>
+                <div>
+                  <div class="code-line"><span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Co-Founder & CTO"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"IB Cognito"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"Jul 2024 – Present"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"desc"</span><span class="ln-punct">:</span> <span class="ln-string">"Built free IB learning platform from scratch → 10k monthly users, 108 countries. Backed by WACP International."</span></div>
+                  <div class="work-tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">10k users</span><span class="tag">108 countries</span></div>
+                </div>
+              </div>
             </div>
 
             <div class="work-entry reveal">
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">{</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Web-developer"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"org"</span><span class="ln-punct">:</span>  <a href="sanjayrajawat.com" class="ln-link">"sanjayrajawat.com"</a><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"2026 - now"</span><span class="ln-punct">,</span></div>
-               <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"description"</span><span class="ln-punct">:</span> <span class="ln-punct"></span><span class="ln-string">"Researching transciptomic data under stress-conditions in Circulating Tumor Cells."</span></div>              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">}</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">},</span></div>
+              <div class="work-header">
+                <div class="work-dot dot-active"></div>
+                <div>
+                  <div class="code-line"><span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Co-ops Lead"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"MLV"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"Feb 2026 – Present"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"desc"</span><span class="ln-punct">:</span> <span class="ln-string">"Managing and scaling brand ambassador network across India. Recruiting, onboarding, and performance-tracking community leads."</span></div>
+                  <div class="work-tags"><span class="tag">Leadership</span><span class="tag">Operations</span></div>
+                </div>
+              </div>
             </div>
 
             <div class="work-entry reveal">
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-punct">{</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"B.Tech Computer Science"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"Your University"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"2022 — '26"</span><span class="ln-punct">,</span></div>
+              <div class="work-header">
+                <div class="work-dot dot-past"></div>
+                <div>
+                  <div class="code-line"><span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"AI/ML Intern"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"Pharmint"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"Jun – Aug 2025"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"desc"</span><span class="ln-punct">:</span> <span class="ln-string">"ML classification of hypoxic vs normoxic cancer cell states from RNA-seq data. 83.3% accuracy via LOO CV. Supervised by Dr. Sarita Poonia."</span></div>
+                  <div class="work-tags"><span class="tag">Random Forest</span><span class="tag">RNA-seq</span><span class="tag">83.3% acc</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-entry reveal">
+              <div class="work-header">
+                <div class="work-dot dot-past"></div>
+                <div>
+                  <div class="code-line"><span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Web Developer"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"org"</span><span class="ln-punct">:</span> <a href="https://sanjayrajawat.com" class="ln-link" target="_blank">"sanjayrajawat.com"</a><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"Jun – Sep 2025"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"desc"</span><span class="ln-punct">:</span> <span class="ln-string">"End-to-end dev of IB educational platform with 3k+ paid users. 40+ dynamic pages, interactive quizzes (HTML/CSS/PHP), Stripe payment infra."</span></div>
+                  <div class="work-tags"><span class="tag">PHP</span><span class="tag">Stripe</span><span class="tag">3k+ users</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-entry reveal">
+              <div class="work-header">
+                <div class="work-dot dot-past"></div>
+                <div>
+                  <div class="code-line"><span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Policy Research Intern"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"Government of Uttar Pradesh"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"May – Jul 2025"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"desc"</span><span class="ln-punct">:</span> <span class="ln-string">"Proposed cooperative-based economic model for farmers in Hathras district. Focused on feasibility and long-term sustainability."</span></div>
+                  <div class="work-tags"><span class="tag">Policy</span><span class="tag">Research</span><span class="tag">Economics</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-entry reveal">
+              <div class="work-header">
+                <div class="work-dot dot-past"></div>
+                <div>
+                  <div class="code-line"><span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Library Development Manager"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"Share A Book India"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"Mar 2025 – May 2026"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"desc"</span><span class="ln-punct">:</span> <span class="ln-string">"Launched city's first Library Development Program. Impacted 100+ underprivileged students, improving English reading by at least one grade."</span></div>
+                  <div class="work-tags"><span class="tag">Social Impact</span><span class="tag">100+ students</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-entry reveal">
+              <div class="work-header">
+                <div class="work-dot dot-past"></div>
+                <div>
+                  <div class="code-line"><span class="ln-key">"role"</span><span class="ln-punct">:</span> <span class="ln-string">"Teaching Intern"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"org"</span><span class="ln-punct">:</span> <span class="ln-string">"Schoolhouse.world + Udaan India Foundation"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"period"</span><span class="ln-punct">:</span> <span class="ln-string">"Jul 2024 – Jun 2025"</span><span class="ln-punct">,</span></div>
+                  <div class="code-line"><span class="ln-key">"desc"</span><span class="ln-punct">:</span> <span class="ln-string">"SAT Math to 40+ learners across 20+ countries (Schoolhouse). Science & reasoning to 40+ underprivileged students (Udaan)."</span></div>
+                  <div class="work-tags"><span class="tag">Teaching</span><span class="tag">80+ students</span><span class="tag">20+ countries</span></div>
+                </div>
+              </div>
             </div>
 
             <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">]</span></div>
@@ -177,41 +282,139 @@
             <div class="code-line">&nbsp;</div>
           </section>
 
-          <!-- ── PROJECTS ────────────────────────────────────── -->
+          <!-- ── PROJECTS ────────────────────────── -->
           <section id="projects" class="code-section">
-            <div class="code-line"><span class="ln-comment">// projects.ts</span></div>
+            <div class="code-line"><span class="ln-comment">// projects.ts — click to expand</span></div>
             <div class="code-line">&nbsp;</div>
-            <div class="code-line"><span class="ln-keyword">const</span> <span class="ln-var">projects</span> <span class="ln-punct">=</span> <span class="ln-punct">[</span></div>
+            <div class="code-line"><span class="ln-keyword">const</span> <span class="ln-var">projects</span> <span class="ln-punct">= [</span></div>
             <div class="code-line">&nbsp;</div>
 
-            <!-- CHANGE: each project block -->
-            <div class="proj-block reveal">
-              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">{</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"Your Main Project"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string building">"building"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"One punchy sentence. What it does and why it matters."</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"React"</span><span class="ln-punct">, </span><span class="ln-string">"Python"</span><span class="ln-punct">, </span><span class="ln-string">"Postgres"</span><span class="ln-punct">],</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">url</span><span class="ln-punct">:</span> <a href="#" class="ln-link">"yourproject.io"</a></div>
+            <!-- PROJECT 1: IB Cognito -->
+            <div class="proj-block reveal" data-proj="ibcognito">
+              <div class="proj-header" onclick="toggleProject('ibcognito')">
+                <span class="proj-arrow">▶</span>
+                <span class="ln-punct">{</span>
+                <span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"IB Cognito"</span><span class="ln-punct">,</span>
+                <span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string building">"live 🟢"</span>
+                <span class="proj-expand-hint">// click to expand</span>
+              </div>
+              <div class="proj-body" id="proj-ibcognito">
+                <div class="proj-content">
+                  <div class="proj-metrics-row">
+                    <div class="proj-metric"><span class="pm-num">10k+</span><span class="pm-label">monthly users</span></div>
+                    <div class="proj-metric"><span class="pm-num">108</span><span class="pm-label">countries</span></div>
+                    <div class="proj-metric"><span class="pm-num">WACP</span><span class="pm-label">backed</span></div>
+                  </div>
+                  <div class="proj-desc-block">
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"Free IB learning platform built from scratch. Global reach spanning 108 countries — zero marketing budget."</span></div>
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"React"</span><span class="ln-punct">, </span><span class="ln-string">"Node.js"</span><span class="ln-punct">, </span><span class="ln-string">"PostgreSQL"</span><span class="ln-punct">],</span></div>
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">url</span><span class="ln-punct">:</span> <a href="https://ibcognito.com" class="ln-link" target="_blank">"ibcognito.com"</a></div>
+                  </div>
+                  <div class="work-tags" style="padding-left:1.5rem"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">EdTech</span></div>
+                </div>
+              </div>
               <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">},</span></div>
             </div>
 
-            <div class="proj-block reveal">
-              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">{</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"AI Side Project"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string inprogress">"in-progress"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"An agent, tool, or weird experiment you wanted to try."</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"Python"</span><span class="ln-punct">, </span><span class="ln-string">"GPT-4o"</span><span class="ln-punct">, </span><span class="ln-string">"FastAPI"</span><span class="ln-punct">],</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">url</span><span class="ln-punct">:</span> <a href="#" class="ln-link">"github.com/you/project"</a></div>
+            <!-- PROJECT 2: Black-Scholes -->
+            <div class="proj-block reveal" data-proj="blackscholes">
+              <div class="proj-header" onclick="toggleProject('blackscholes')">
+                <span class="proj-arrow">▶</span>
+                <span class="ln-punct">{</span>
+                <span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"Black-Scholes Options Pricer"</span><span class="ln-punct">,</span>
+                <span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string inprogress">"complete"</span>
+              </div>
+              <div class="proj-body" id="proj-blackscholes">
+                <div class="proj-content">
+                  <div class="proj-formula">
+                    <span class="formula-label">// Black-Scholes</span>
+                    <span class="formula-eq">C = S·N(d₁) - K·e<sup>-rT</sup>·N(d₂)</span>
+                    <span class="formula-label">// norm_cdf via Abramowitz &amp; Stegun (err &lt; 7.5e-8)</span>
+                  </div>
+                  <div class="proj-desc-block">
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"European option pricing from scratch. Built analytical Black-Scholes, all 5 Greeks (Δ Γ V Θ ρ), Monte Carlo via geometric Brownian motion — zero financial libs."</span></div>
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"Python"</span><span class="ln-punct">, </span><span class="ln-string">"NumPy"</span><span class="ln-punct">, </span><span class="ln-string">"Monte Carlo"</span><span class="ln-punct">],</span></div>
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">period</span><span class="ln-punct">:</span> <span class="ln-string">"Mar – Apr 2026"</span></div>
+                  </div>
+                  <div class="work-tags" style="padding-left:1.5rem"><span class="tag">Python</span><span class="tag">Quant Finance</span><span class="tag">Monte Carlo</span><span class="tag">from scratch</span></div>
+                </div>
+              </div>
               <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">},</span></div>
             </div>
 
-            <div class="proj-block reveal">
-              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">{</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"Hackathon Win"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string award">"🏆 1st place"</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"What you built in 24 hrs. Keep it simple — problem and solution."</span><span class="ln-punct">,</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"Next.js"</span><span class="ln-punct">, </span><span class="ln-string">"OpenAI"</span><span class="ln-punct">],</span></div>
-              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">url</span><span class="ln-punct">:</span> <a href="#" class="ln-link">"devpost.com/your-project"</a></div>
+            <!-- PROJECT 3: Stock Forecasting -->
+            <div class="proj-block reveal" data-proj="stocks">
+              <div class="proj-header" onclick="toggleProject('stocks')">
+                <span class="proj-arrow">▶</span>
+                <span class="ln-punct">{</span>
+                <span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"Ensemble Stock Forecaster"</span><span class="ln-punct">,</span>
+                <span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string inprogress">"published 📄"</span>
+              </div>
+              <div class="proj-body" id="proj-stocks">
+                <div class="proj-content">
+                  <div class="proj-metrics-row">
+                    <div class="proj-metric"><span class="pm-num">55%</span><span class="pm-label">directional acc</span></div>
+                    <div class="proj-metric"><span class="pm-num">150+</span><span class="pm-label">downloads</span></div>
+                    <div class="proj-metric"><span class="pm-num">5</span><span class="pm-label">models ensembled</span></div>
+                  </div>
+                  <div class="proj-desc-block">
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"Multi-model ensemble integrating RF, XGBoost, ARIMA, Prophet, Gradient Boosting on SPY data. 15+ technical indicators. Published in RARS."</span></div>
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"Python"</span><span class="ln-punct">, </span><span class="ln-string">"XGBoost"</span><span class="ln-punct">, </span><span class="ln-string">"Streamlit"</span><span class="ln-punct">, </span><span class="ln-string">"yfinance"</span><span class="ln-punct">],</span></div>
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">paper</span><span class="ln-punct">:</span> <span class="ln-string">"Research Archive of Rising Scholars · Sep 2025"</span></div>
+                  </div>
+                  <div class="work-tags" style="padding-left:1.5rem"><span class="tag">XGBoost</span><span class="tag">ARIMA</span><span class="tag">Prophet</span><span class="tag">Streamlit</span><span class="tag">Published</span></div>
+                </div>
+              </div>
+              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">},</span></div>
+            </div>
+
+            <!-- PROJECT 4: Cancer ML -->
+            <div class="proj-block reveal" data-proj="cancer">
+              <div class="proj-header" onclick="toggleProject('cancer')">
+                <span class="proj-arrow">▶</span>
+                <span class="ln-punct">{</span>
+                <span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"ML Cancer Genomics Classifier"</span><span class="ln-punct">,</span>
+                <span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string building">"research 🧬"</span>
+              </div>
+              <div class="proj-body" id="proj-cancer">
+                <div class="proj-content">
+                  <div class="proj-metrics-row">
+                    <div class="proj-metric"><span class="pm-num">83.3%</span><span class="pm-label">accuracy</span></div>
+                    <div class="proj-metric"><span class="pm-num">9,908</span><span class="pm-label">genes analyzed</span></div>
+                    <div class="proj-metric"><span class="pm-num">LOO</span><span class="pm-label">cross-validation</span></div>
+                  </div>
+                  <div class="proj-desc-block">
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"Random Forest on high-dimensional gene expression data to classify hypoxic vs normoxic cancer cell states. PCA + DEA on GEO GSE260794."</span></div>
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"Python"</span><span class="ln-punct">, </span><span class="ln-string">"scikit-learn"</span><span class="ln-punct">, </span><span class="ln-string">"PCA"</span><span class="ln-punct">, </span><span class="ln-string">"RNA-seq"</span><span class="ln-punct">]</span></div>
+                  </div>
+                  <div class="work-tags" style="padding-left:1.5rem"><span class="tag">scikit-learn</span><span class="tag">PCA</span><span class="tag">RNA-seq</span><span class="tag">Pharmint</span></div>
+                </div>
+              </div>
+              <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">},</span></div>
+            </div>
+
+            <!-- PROJECT 5: RSA -->
+            <div class="proj-block reveal" data-proj="rsa">
+              <div class="proj-header" onclick="toggleProject('rsa')">
+                <span class="proj-arrow">▶</span>
+                <span class="ln-punct">{</span>
+                <span class="ln-key">name</span><span class="ln-punct">:</span> <span class="ln-string">"RSA Decryption Time Modeller"</span><span class="ln-punct">,</span>
+                <span class="ln-key">status</span><span class="ln-punct">:</span> <span class="ln-string award">"IB IA · A grade"</span>
+              </div>
+              <div class="proj-body" id="proj-rsa">
+                <div class="proj-content">
+                  <div class="proj-formula">
+                    <span class="formula-label">// Pollard's Rho complexity</span>
+                    <span class="formula-eq">T ≈ O(n<sup>1/4</sup>) vs O(n<sup>1/2</sup>) naive</span>
+                    <span class="formula-label">// 308-digit key → 10^313s (naïve) | 10^152s (Rho)</span>
+                  </div>
+                  <div class="proj-desc-block">
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">desc</span><span class="ln-punct">:</span> <span class="ln-string">"Full RSA pipeline from scratch. Naïve Trial Division + Pollard's Rho factorization engines. Benchmarked across 4-13 digit primes, extrapolated to real-world 308-digit keys."</span></div>
+                    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ln-key">stack</span><span class="ln-punct">:</span> <span class="ln-punct">[</span><span class="ln-string">"Python"</span><span class="ln-punct">, </span><span class="ln-string">"Cryptography"</span><span class="ln-punct">, </span><span class="ln-string">"Number Theory"</span><span class="ln-punct">]</span></div>
+                  </div>
+                  <div class="work-tags" style="padding-left:1.5rem"><span class="tag">Cryptography</span><span class="tag">Python</span><span class="tag">Number Theory</span><span class="tag">from scratch</span></div>
+                </div>
+              </div>
               <div class="code-line">&nbsp;&nbsp;<span class="ln-punct">}</span></div>
             </div>
 
@@ -222,7 +425,85 @@
             <div class="code-line">&nbsp;</div>
           </section>
 
-          <!-- ── HOBBIES ─────────────────────────────────────── -->
+          <!-- ── AWARDS ──────────────────────────── -->
+          <section id="awards" class="code-section">
+            <div class="code-line"><span class="ln-comment"># awards.yml</span></div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="ln-key">honors</span><span class="ln-punct">:</span></div>
+            <div class="code-line">&nbsp;</div>
+
+            <div class="awards-grid">
+              <div class="award-card reveal">
+                <div class="award-icon">🏆</div>
+                <div class="award-body">
+                  <div class="award-title">Principal's Award</div>
+                  <div class="award-meta">Podar International School · Apr 2026</div>
+                  <div class="award-desc">Awarded to 6 of 100 students for all-rounder excellence across academics, leadership & extracurriculars.</div>
+                </div>
+              </div>
+              <div class="award-card reveal">
+                <div class="award-icon">💡</div>
+                <div class="award-body">
+                  <div class="award-title">Young Innovator's Award</div>
+                  <div class="award-meta">Podar International School · Apr 2026</div>
+                  <div class="award-desc">For building IB Cognito and scaling to 10k monthly users while studying IBDP full-time.</div>
+                </div>
+              </div>
+              <div class="award-card reveal">
+                <div class="award-icon">📈</div>
+                <div class="award-body">
+                  <div class="award-title">4th Place — Harvard Stock Pitch</div>
+                  <div class="award-meta">Harvard Student Agencies · Sep 2024</div>
+                  <div class="award-desc">International equity pitch competition. Delivered valuation analysis, growth catalysts, and risk assessment to Harvard panel.</div>
+                </div>
+              </div>
+              <div class="award-card reveal">
+                <div class="award-icon">🥉</div>
+                <div class="award-body">
+                  <div class="award-title">AMO 2024 Bronze · World Rank 17</div>
+                  <div class="award-meta">SIMCC · India Rank 14</div>
+                  <div class="award-desc">American Math Olympiad. Bronze medal, ranked 17th globally and 14th in India.</div>
+                </div>
+              </div>
+              <div class="award-card reveal">
+                <div class="award-icon">🥇</div>
+                <div class="award-body">
+                  <div class="award-title">All India Rank 1 — ICSE CS</div>
+                  <div class="award-meta">CISCE Merit Certificate</div>
+                  <div class="award-desc">Top of India in ICSE Computer Science examinations.</div>
+                </div>
+              </div>
+              <div class="award-card reveal">
+                <div class="award-icon">🔬</div>
+                <div class="award-body">
+                  <div class="award-title">IRO 2025 Honor Roll</div>
+                  <div class="award-meta">International Research Olympiad</div>
+                  <div class="award-desc">Recognized for research excellence on the international stage.</div>
+                </div>
+              </div>
+              <div class="award-card reveal">
+                <div class="award-icon">🥉</div>
+                <div class="award-body">
+                  <div class="award-title">NJCO 2024 Bronze</div>
+                  <div class="award-meta">COF · National Junior Chemistry Olympiad</div>
+                  <div class="award-desc">Bronze medal at the National Junior Chemistry Olympiad.</div>
+                </div>
+              </div>
+              <div class="award-card reveal">
+                <div class="award-icon">📄</div>
+                <div class="award-body">
+                  <div class="award-title">Published Researcher (×2)</div>
+                  <div class="award-meta">RARS · Sep 2025 + IERJ · Dec 2024</div>
+                  <div class="award-desc">SPY forecasting paper (150+ downloads) + Quantum Cryptography paper in IERJ.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line">&nbsp;</div>
+          </section>
+
+          <!-- ── HOBBIES ─────────────────────────── -->
           <section id="life" class="code-section">
             <div class="code-line"><span class="ln-comment">// hobbies.jsx — life outside the editor</span></div>
             <div class="code-line">&nbsp;</div>
@@ -230,35 +511,38 @@
             <div class="code-line">&nbsp;&nbsp;<span class="ln-keyword">return</span> <span class="ln-punct">(</span></div>
             <div class="code-line">&nbsp;</div>
             <div class="hobbies-grid">
-              <!-- CHANGE: your hobbies -->
               <div class="hobby-item reveal">
                 <div class="hobby-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=80" alt="Photography" />
+                  <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&q=80" alt="Fitness" />
+                  <div class="hobby-overlay"></div>
                 </div>
                 <div class="hobby-meta">
-                  <span class="hobby-prop"><span class="ln-key">activity</span><span class="ln-punct">:</span> <span class="ln-string">"Photography"</span></span>
-                  <span class="hobby-prop"><span class="ln-key">gear</span><span class="ln-punct">:</span> <span class="ln-string">"Fuji X100V"</span></span>
-                  <span class="hobby-prop"><span class="ln-key">location</span><span class="ln-punct">:</span> <span class="ln-string">"Mumbai streets"</span></span>
-                </div>
-              </div>
-              <div class="hobby-item reveal">
-                <div class="hobby-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80" alt="Running" />
-                </div>
-                <div class="hobby-meta">
-                  <span class="hobby-prop"><span class="ln-key">activity</span><span class="ln-punct">:</span> <span class="ln-string">"Running"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">module</span><span class="ln-punct">:</span> <span class="ln-string">"fitness.module"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">activity</span><span class="ln-punct">:</span> <span class="ln-string">"Gym · Running"</span></span>
                   <span class="hobby-prop"><span class="ln-key">goal</span><span class="ln-punct">:</span> <span class="ln-string">"Half marathon"</span></span>
-                  <span class="hobby-prop"><span class="ln-key">route</span><span class="ln-punct">:</span> <span class="ln-string">"Marine Drive 6am"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">note</span><span class="ln-punct">:</span> <span class="ln-string">"Building THE fitness app"</span></span>
                 </div>
               </div>
               <div class="hobby-item reveal">
                 <div class="hobby-img-wrap">
                   <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&q=80" alt="Reading" />
+                  <div class="hobby-overlay"></div>
                 </div>
                 <div class="hobby-meta">
-                  <span class="hobby-prop"><span class="ln-key">activity</span><span class="ln-punct">:</span> <span class="ln-string">"Reading"</span></span>
-                  <span class="hobby-prop"><span class="ln-key">genre</span><span class="ln-punct">:</span> <span class="ln-string">"Non-fiction, Sci-fi"</span></span>
-                  <span class="hobby-prop"><span class="ln-key">currentBook</span><span class="ln-punct">:</span> <span class="ln-string">"Something Good"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">module</span><span class="ln-punct">:</span> <span class="ln-string">"reading.module"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">genre</span><span class="ln-punct">:</span> <span class="ln-string">"Non-fiction · Sci-fi"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">philosophy</span><span class="ln-punct">:</span> <span class="ln-string">"ideas compound like code"</span></span>
+                </div>
+              </div>
+              <div class="hobby-item reveal">
+                <div class="hobby-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&q=80" alt="Math" />
+                  <div class="hobby-overlay"></div>
+                </div>
+                <div class="hobby-meta">
+                  <span class="hobby-prop"><span class="ln-key">module</span><span class="ln-punct">:</span> <span class="ln-string">"mathematics.module"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">level</span><span class="ln-punct">:</span> <span class="ln-string">"IB Math AA HL · Olympiads"</span></span>
+                  <span class="hobby-prop"><span class="ln-key">vibe</span><span class="ln-punct">:</span> <span class="ln-string">"AMO Bronze · World Rank 17"</span></span>
                 </div>
               </div>
             </div>
@@ -269,31 +553,40 @@
             <div class="code-line">&nbsp;</div>
           </section>
 
-          <!-- ── CONTACT ─────────────────────────────────────── -->
+          <!-- ── CONTACT ─────────────────────────── -->
           <section id="contact" class="code-section">
             <div class="code-line"><span class="ln-comment">#!/bin/bash</span></div>
             <div class="code-line"><span class="ln-comment"># contact.sh</span></div>
             <div class="code-line">&nbsp;</div>
-            <div class="code-line"><span class="ln-keyword">echo</span> <span class="ln-string">"Build something together."</span></div>
-            <div class="code-line">&nbsp;</div>
-            <div class="code-line"><span class="ln-var">EMAIL</span><span class="ln-punct">=</span><span class="ln-string">"<a href="mailto:you@example.com" class="ln-link">you@example.com</a>"</span></div>  <!-- CHANGE -->
-            <div class="code-line"><span class="ln-var">GITHUB</span><span class="ln-punct">=</span><span class="ln-string">"<a href="https://github.com" class="ln-link" target="_blank">github.com/yourhandle</a>"</span></div>  <!-- CHANGE -->
-            <div class="code-line"><span class="ln-var">LINKEDIN</span><span class="ln-punct">=</span><span class="ln-string">"<a href="https://linkedin.com" class="ln-link" target="_blank">linkedin.com/in/yourprofile</a>"</span></div>  <!-- CHANGE -->
-            <div class="code-line">&nbsp;</div>
-            <div class="code-line"><span class="ln-keyword">open</span> <span class="ln-string">"mailto:$EMAIL"</span></div>
+            <div class="terminal-block reveal">
+              <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-cmd">echo</span> <span class="ln-string">"Let's build something."</span></div>
+              <div class="terminal-line"><span class="t-out">→ Always open to research collabs, builder chats, or just a good idea.</span></div>
+              <div class="terminal-line">&nbsp;</div>
+              <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-var">EMAIL</span><span class="t-eq">=</span><span class="ln-string">"<a href="mailto:puranjayhaldankar2009@gmail.com" class="ln-link">puranjayhaldankar2009@gmail.com</a>"</span></div>
+              <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-var">GITHUB</span><span class="t-eq">=</span><span class="ln-string">"<a href="https://github.com/puranjayh" class="ln-link" target="_blank">github.com/puranjayh</a>"</span></div>
+              <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-var">LINKEDIN</span><span class="t-eq">=</span><span class="ln-string">"<a href="https://www.linkedin.com/in/puranjay-haldankar-529a07320/" class="ln-link" target="_blank">linkedin.com/in/puranjay-haldankar</a>"</span></div>
+              <div class="terminal-line">&nbsp;</div>
+              <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-cmd">currently</span></div>
+              <div class="terminal-line"><span class="t-out">→ Building adaptive lifting intelligence</span></div>
+              <div class="terminal-line"><span class="t-out">→ Researching CTC immune evasion w/ GNNs</span></div>
+              <div class="terminal-line"><span class="t-out">→ CS @ Georgia Tech Fall '26</span></div>
+              <div class="terminal-line">&nbsp;</div>
+              <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-cmd">open</span> <span class="ln-string">"mailto:$EMAIL"</span> <span class="cursor">█</span></div>
+            </div>
             <div class="code-line">&nbsp;</div>
             <div class="code-line">&nbsp;</div>
           </section>
 
         </div><!-- /code-body -->
       </div><!-- /code-view -->
-    </main><!-- /editor-content -->
+    </main>
 
     <!-- STATUS BAR -->
     <div class="status-bar">
       <div class="status-left">
         <span class="status-item git">⎇ main</span>
         <span class="status-item">✓ 0 errors</span>
+        <span class="status-item pulse-dot">● live</span>
       </div>
       <div class="status-right">
         <span class="status-item" id="statusFile">Markdown</span>
